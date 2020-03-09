@@ -1,7 +1,11 @@
 import { registerStore } from "@wordpress/data";
+import { useImperativeHandle } from "react";
 
+// набор объектов:
+// {userId, id, title, completed}
 const DEFAULT_STATE = [];
 
+//  action just a plain object
 const actions = {
     addToDo(item) {
         return {
@@ -26,7 +30,9 @@ const selectors = {
     }
 };
 
-registerStore(" ", {
+// Урок 104 gjxtve стоит пробел не ясно
+registerStore('mytheme-blocks/todo', {
+// registerStore(" ", {
     reducer,
     selectors,
     actions

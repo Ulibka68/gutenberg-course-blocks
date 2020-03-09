@@ -42,6 +42,7 @@ function mytheme_blocks_register_block_type($block, $options = array ()) {
     );
 }
 
+// Урок 102
 function mytheme_blocks_enqueue_assets() {
     wp_enqueue_script(
         'mytheme-blocks-editor-js',

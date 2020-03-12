@@ -1,8 +1,13 @@
-const autoprefixer = require("autoprefixer");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+
+// This plugin uses terser to minify your JavaScript.
 const TerserPlugin = require("terser-webpack-plugin");
-// const CleanPlugin = require("clean-webpack-plugin");
+
+// It will search for CSS assets during the Webpack build and will optimize \ minimize the CSS 
+// (by default it uses cssnano but a custom CSS processor can be specified).
+const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+
 
 module.exports = (env, argv) => {
     function isDevelopment() {
@@ -11,8 +16,7 @@ module.exports = (env, argv) => {
     var config = {
         entry: {
             editor: "./src/editor.js",
-            script: "./src/script.js",
-            editor_script: "./src/editor_script.js"
+            script: "./src/script.js"
         },
         output: {
             filename: "[name].js"
@@ -33,17 +37,21 @@ module.exports = (env, argv) => {
             ]
         },
         plugins: [
-            // new CleanPlugin(),
           
             new MiniCssExtractPlugin({
-                chunkFilename: '[id].css',
-              
-                moduleFilename: (chunk) => {
-                  const { name } = chunk;
-                  return   name === "script" ? "style.css" : "[name].css";
-                }
-              })
-        ],
+              chunkFilename: '[id].css',
+            //   chunk типа webpack.compilation.Chunk
+              moduleFilename: (chunk) => {
+                const { name } = chunk;
+                // chunk.entryModule.id) == './src/editor.js',
+                // name == 'editor'
+                return   name === "script" ? "style.css" : "[name].css";
+              }
+            }),
+            new CleanWebpackPlugin(),
+
+          ],
+      
         devtool: isDevelopment() ? "cheap-module-source-map" : "source-map",
         module: {
             rules: [
@@ -74,35 +82,23 @@ module.exports = (env, argv) => {
                     ]
                 },
                 {
-                    test: /\.(sa|sc|c)ss$/,
+                    test: /\.(sass|scss|css)$/,
                     use: [
-                        MiniCssExtractPlugin.loader,
+                         MiniCssExtractPlugin.loader,
                         "css-loader",
-                        {
-                            loader: "postcss-loader",
-                            options: {
-                                plugins: [autoprefixer()]
-                            }
-                        },
                         "sass-loader"
                     ]
                 }
+             
             ]
         },
         externals: {
             jquery: "jQuery",
-            lodash: "lodash",
             "@wordpress/blocks": ["wp", "blocks"],
             "@wordpress/i18n": ["wp", "i18n"],
             "@wordpress/editor": ["wp", "editor"],
             "@wordpress/components": ["wp", "components"],
-            "@wordpress/element": ["wp", "element"],
-            "@wordpress/blob": ["wp", "blob"],
-            "@wordpress/data": ["wp", "data"],
-            "@wordpress/html-entities": ["wp", "htmlEntities"],
-            "@wordpress/compose": ["wp", "compose"],
-            "@wordpress/plugins": ["wp", "plugins"],
-            "@wordpress/edit-post": ["wp", "editPost"]
+            "@wordpress/element": ["wp", "element"]
         }
     };
     return config;

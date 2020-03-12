@@ -1,8 +1,8 @@
 const autoprefixer = require("autoprefixer");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const MiniCSSExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
-// const CleanPlugin = require("clean-webpack-plugin");
+const CleanPlugin = require("clean-webpack-plugin");
 
 module.exports = (env, argv) => {
     function isDevelopment() {
@@ -33,16 +33,15 @@ module.exports = (env, argv) => {
             ]
         },
         plugins: [
-            // new CleanPlugin(),
-          
-            new MiniCssExtractPlugin({
-                chunkFilename: '[id].css',
-              
-                moduleFilename: (chunk) => {
-                  const { name } = chunk;
-                  return   name === "script" ? "style.css" : "[name].css";
+            new CleanPlugin(),
+            new MiniCSSExtractPlugin({
+                chunkFilename: "[id].css",
+                filename: chunkData => {
+                    return chunkData.chunk.name === "script"
+                        ? "style.css"
+                        : "[name].css";
                 }
-              })
+            })
         ],
         devtool: isDevelopment() ? "cheap-module-source-map" : "source-map",
         module: {
@@ -76,7 +75,7 @@ module.exports = (env, argv) => {
                 {
                     test: /\.(sa|sc|c)ss$/,
                     use: [
-                        MiniCssExtractPlugin.loader,
+                        MiniCSSExtractPlugin.loader,
                         "css-loader",
                         {
                             loader: "postcss-loader",

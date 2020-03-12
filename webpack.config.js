@@ -2,7 +2,8 @@ const autoprefixer = require("autoprefixer");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
-// const CleanPlugin = require("clean-webpack-plugin");
+
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = (env, argv) => {
     function isDevelopment() {
@@ -33,11 +34,12 @@ module.exports = (env, argv) => {
             ]
         },
         plugins: [
-            // new CleanPlugin(),
-          
+            new CleanWebpackPlugin({
+                // Write Logs to Console
+                verbose: true,
+            }),
             new MiniCssExtractPlugin({
                 chunkFilename: '[id].css',
-              
                 moduleFilename: (chunk) => {
                   const { name } = chunk;
                   return   name === "script" ? "style.css" : "[name].css";
@@ -84,6 +86,7 @@ module.exports = (env, argv) => {
                                 plugins: [autoprefixer()]
                             }
                         },
+                     
                         "sass-loader"
                     ]
                 }

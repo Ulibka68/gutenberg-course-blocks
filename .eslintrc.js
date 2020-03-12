@@ -5,6 +5,9 @@ module.exports = {
         node: true
     },
     extends: ["eslint:recommended", "prettier", "plugin:react/recommended"],
+    settings: {
+        react : { version : "detect"}
+    },
     globals: {
         Atomics: "readonly",
         SharedArrayBuffer: "readonly",

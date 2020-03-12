@@ -7,7 +7,8 @@
         "checkFormat": "prettier --check \"**/*.{js,json,css,scss}\"",
         "format": "prettier --write \"**/*.{js,json,css,scss}\"",
         "lint": "eslint src",
-        "start": "webpack --mode=development --watch",
+        "start1": "webpack --mode=development --watch",
+        "start": "webpack --mode=development",
         "build": "npm run lint && webpack --mode=production && gulp bundle"
     },
     "repository": {

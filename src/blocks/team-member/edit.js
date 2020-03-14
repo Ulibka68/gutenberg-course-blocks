@@ -1,6 +1,7 @@
 import { Component } from "@wordpress/element";
 import { RichText } from "@wordpress/editor";
 import { __ } from "@wordpress/i18n";
+import VggGutenConst from "../../constants";
 
 class TeamMemberEdit extends Component {
     onChangeTitle = title => {
@@ -19,7 +20,7 @@ class TeamMemberEdit extends Component {
                     tagName="h4"
                     onChange={this.onChangeTitle}
                     value={title}
-                    placeholder={__("Member Name", "mytheme-blocks")}
+                    placeholder={__("Member Name", VggGutenConst.NAMESPACE)}
                     formatingControls={[]}
                 />
                 <RichText
@@ -27,7 +28,7 @@ class TeamMemberEdit extends Component {
                     tagName="p"
                     onChange={this.onChangeInfo}
                     value={info}
-                    placeholder={__("Member Info", "mytheme-blocks")}
+                    placeholder={__("Member Info", VggGutenConst.NAMESPACE)}
                     formatingControls={[]}
                 />
             </div>

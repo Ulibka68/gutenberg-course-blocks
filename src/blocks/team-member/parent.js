@@ -1,20 +1,21 @@
 import { registerBlockType } from "@wordpress/blocks";
 import { __ } from "@wordpress/i18n";
 import { InnerBlocks } from "@wordpress/editor";
+import VggGutenConst from "../../constants";
 
-registerBlockType("mytheme-blocks/team-members", {
-    title: __("Team Members", "mytheme-blocks"),
+registerBlockType(VggGutenConst.NAMESPACE + VggGutenConst.BLK_NAME_TEAM_MEMBERS, {
+    title: __("Team Members", VggGutenConst.NAMESPACE),
 
-    description: __("Block showing a Team Members.", "mytheme-blocks"),
+    description: __("Block showing a Team Members.", VggGutenConst.NAMESPACE),
 
     icon: "grid-view",
 
-    category: "mytheme-category",
+    category: VggGutenConst.SLUG_THEME_CATEGORY,
 
     keywords: [
-        __("team", "mytheme-blocks"),
-        __("member", "mytheme-blocks"),
-        __("person", "mytheme-blocks")
+        __("team", VggGutenConst.NAMESPACE),
+        __("member", VggGutenConst.NAMESPACE),
+        __("person", VggGutenConst.NAMESPACE)
     ],
 
     edit({ className }) {
@@ -23,8 +24,8 @@ registerBlockType("mytheme-blocks/team-members", {
                 <InnerBlocks
                     allowedBlocks={["mytheme-blocks/team-member"]}
                     template={[
-                        ["mytheme-blocks/team-member"],
-                        ["mytheme-blocks/team-member"]
+                        [VggGutenConst.NAMESPACE + VggGutenConst.BLK_NAME_TEAM_MEMBER],
+                        [VggGutenConst.NAMESPACE + VggGutenConst.BLK_NAME_TEAM_MEMBER]
                     ]}
                 />
             </div>

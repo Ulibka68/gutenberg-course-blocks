@@ -4,6 +4,8 @@ import { registerBlockType } from "@wordpress/blocks";
 import { __ } from "@wordpress/i18n";
 import edit from "./edit";
 import { RichText } from "@wordpress/editor";
+import VggGutenConst from "../../constants";
+
 
 const attributes = {
     title: {
@@ -18,21 +20,21 @@ const attributes = {
     }
 };
 
-registerBlockType("mytheme-blocks/team-member", {
+registerBlockType(VggGutenConst.NAMESPACE + "/team-member", {
     title: __("Team Member", "mytheme-blocks"),
 
-    description: __(" Block showing a Team Member. ", "mytheme-blocks"),
+    description: __(" Block showing a Team Member. ", VggGutenConst.NAMESPACE),
 
     icon: "admin-users",
 
-    parent: ["mytheme-blocks/team-members"],
+    parent: [VggGutenConst.NAMESPACE + VggGutenConst.BLK_NAME_TEAM_MEMBERS],
 
-    category: "mytheme-category",
+    category: VggGutenConst.SLUG_THEME_CATEGORY,
 
     keywords: [
-        __("team", "mytheme-blocks"),
-        __("member", "mytheme-blocks"),
-        __("person", "mytheme-blocks")
+        __("team", VggGutenConst.NAMESPACE),
+        __("member", VggGutenConst.NAMESPACE),
+        __("person", VggGutenConst.NAMESPACE)
     ],
 
     attributes,

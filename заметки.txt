@@ -8,3 +8,16 @@ npm i @wordpress/blob @wordpress/blocks @wordpress/compose @wordpress/data @word
 
     
 npm i -D @babel/core @babel/plugin-proposal-class-properties @babel/preset-env @babel/preset-react @wordpress/browserslist-config @wordpress/components @wordpress/editor @wordpress/element autoprefixer babel-eslint babel-loader browserslist classnames clean-webpack-plugin css-loader eslint eslint-config-prettier eslint-loader eslint-plugin-react gulp gulp-zip husky lint-staged loadash mini-css-extract-plugin node-sass optimize-css-assets-webpack-plugin postcss-loader prettier sass-loader style-loader webpack webpack-cli   
+
+
+constant columns - assumed 'columns' (this will throw an Error in a future version of PHP) in Y:\OSPanel5-3-5\domains\gutenblock\wp-content\plugins\gutenberg-course-blocks\plugin.php on line 143
+
+Warning: Cannot modify header information - headers already sent by (output started at Y:\OSPanel5-3-5\domains\gutenblock\wp-content\plugins\gutenberg-course-blocks\plugin.php:143) in Y:\OSPanel5-3-5\domains\gutenblock\wp-includes\functions.php on line 6029
+
+Warning: Cannot modify header information - headers already sent by (output started at Y:\OSPanel5-3-5\domains\gutenblock\wp-content\plugins\gutenberg-course-blocks\plugin.php:143) in Y:\OSPanel5-3-5\domains\gutenblock\wp-admin\includes\misc.php on line 1252
+
+Warning: Cannot modify header information - headers already sent by (output started at Y:\OSPanel5-3-5\domains\gutenblock\wp-content\plugins\gutenberg-course-blocks\plugin.php:143) in Y:\OSPanel5-3-5\domains\gutenblock\wp-admin\admin-header.php on line 9
+
+Warning: Cannot modify header information - headers already sent by (output started at Y:\OSPanel5-3-5\domains\gutenblock\wp-content\plugins\gutenberg-course-blocks\plugin.php:143) in Y:\OSPanel5-3-5\domains\gutenblock\wp-includes\option.php on line 961
+
+Warning: Cannot modify header information - headers already sent by (output started at Y:\OSPanel5-3-5\domains\gutenblock\wp-content\plugins\gutenberg-course-blocks\plugin.php:143) in Y:\OSPanel5-3-5\domains\gutenblock\wp-includes\option.php on line 962

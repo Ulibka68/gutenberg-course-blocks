@@ -130,6 +130,7 @@ function mytheme_blocks_render_latest_posts_block($attributes){
     }
 }
 
+/*
 function mytheme_blocks_register_post_template() {
     $post_type_object = get_post_type_object('post');
     $post_type_object->template = array(
@@ -151,3 +152,4 @@ function mytheme_blocks_register_post_template() {
 }
 
 add_action('init', 'mytheme_blocks_register_post_template');
+*/

@@ -14,7 +14,6 @@ registerBlockType(VggGutenConst.NAMESPACE + VggGutenConst.BLK_NAME_TEAM_MEMBERS,
 
     keywords: [
         __("team", VggGutenConst.NAMESPACE),
-        __("member", VggGutenConst.NAMESPACE),
         __("person", VggGutenConst.NAMESPACE)
     ],
 
@@ -24,8 +23,8 @@ registerBlockType(VggGutenConst.NAMESPACE + VggGutenConst.BLK_NAME_TEAM_MEMBERS,
                 <InnerBlocks
                     allowedBlocks={["mytheme-blocks/team-member"]}
                     template={[
-                        [VggGutenConst.NAMESPACE + VggGutenConst.BLK_NAME_TEAM_MEMBER],
-                        [VggGutenConst.NAMESPACE + VggGutenConst.BLK_NAME_TEAM_MEMBER]
+                        [VggGutenConst.NAMESPACE + VggGutenConst.BLK_NAME_TEAM_MEMBER,{title : 'Member1',info : 'CEO info'}],
+                        [VggGutenConst.NAMESPACE + VggGutenConst.BLK_NAME_TEAM_MEMBER,{title : 'Member2',info : 'assistant'}]
                     ]}
                 />
             </div>

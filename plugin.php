@@ -70,7 +70,7 @@ function mytheme_blocks_register() {
         plugins_url('dist/style.css', __FILE__)
     );
     
-    mytheme_blocks_register_block_type('firstblock');
+    // mytheme_blocks_register_block_type('firstblock');
     mytheme_blocks_register_block_type('secondblock');
 }
 

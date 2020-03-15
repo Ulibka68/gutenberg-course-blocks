@@ -46,7 +46,7 @@ const attributes = {
 registerBlockType(VggGutenConst.NAMESPACE + VggGutenConst.BLK_NAME_SECOND, {
     title: __("Second Block", VggGutenConst.NAMESPACE),
     description: __("Our second block", VggGutenConst.NAMESPACE),
-    category: "mytheme-category",
+    category: VggGutenConst.SLUG_THEME_CATEGORY,
     icon: (
         <svg
             xmlns="http://www.w3.org/2000/svg"

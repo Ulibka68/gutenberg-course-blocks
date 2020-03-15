@@ -11,6 +11,7 @@ import {
 } from "@wordpress/editor";
 import { RangeControl, PanelBody } from "@wordpress/components";
 import classnames from "classnames";
+import VggGutenConst from "../../constants";
 
 class Edit extends Component {
     onChangeContent = content => {
@@ -39,7 +40,7 @@ class Edit extends Component {
             backgroundColor,
             textColor
         } = this.props;
-        const { content, textAlignment, shadow, shadowOpacity } = attributes;
+        const { content, textAlignment, shadow, shadowOpacity=0.3 } = attributes;
         const classes = classnames(className, {
             "has-shadow": shadow,
             [`shadow-opacity-${shadowOpacity * 100}`]: shadowOpacity
@@ -47,10 +48,10 @@ class Edit extends Component {
         return (
             <>
                 <InspectorControls>
-                    <PanelBody title={__("Setting", "mytheme-blocks")}>
+                    <PanelBody title={__("Setting", VggGutenConst.NAMESPACE)}>
                         {shadow && (
                             <RangeControl
-                                label={__("Shadow Opacity", "mytheme-blocks")}
+                                label={__("Shadow Opacity", VggGutenConst.NAMESPACE)}
                                 value={shadowOpacity}
                                 onChange={this.onChangeShadowOpacity}
                                 min={0.1}
@@ -60,17 +61,17 @@ class Edit extends Component {
                         )}
                     </PanelBody>
                     <PanelColorSettings
-                        title={__("Panel", "mytheme-blocks")}
+                        title={__("Panel", VggGutenConst.NAMESPACE)}
                         colorSettings={[
                             {
                                 value: backgroundColor.color,
                                 onChange: setBackgroundColor,
-                                label: __("Backgorund Colour", "mytheme-blocks")
+                                label: __("Backgorund Colour", VggGutenConst.NAMESPACE)
                             },
                             {
                                 value: textColor.color,
                                 onChange: setTextColor,
-                                label: __("Text Colour", "mytheme-blocks")
+                                label: __("Text Colour", VggGutenConst.NAMESPACE)
                             }
                         ]}
                     >
@@ -83,8 +84,8 @@ class Edit extends Component {
                 <BlockControls
                     controls={[
                         {
-                            icon: "wordpress",
-                            title: __("Shadow", "mytheme-blocks"),
+                            icon: "images-alt",
+                            title: __("Тень", VggGutenConst.NAMESPACE),
                             onClick: this.toggleShadow,
                             isActive: shadow
                         }

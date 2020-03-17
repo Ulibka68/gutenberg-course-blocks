@@ -1,0 +1,12 @@
+<!-- wp:vgg-lrn-blocks/team-members -->
+<div class="wp-block-vgg-lrn-blocks-team-members">
+
+   <!-- wp:vgg-lrn-blocks/team-member -->
+   <div class="wp-block-vgg-lrn-blocks-team-member"><h4 class="wp-block-mytheme-blocks-team-member__title">Member1</h4><p class="wp-block-mytheme-blocks-team-member__info">CEO info</p></div>
+   <!-- /wp:vgg-lrn-blocks/team-member -->
+
+   <!-- wp:vgg-lrn-blocks/team-member -->
+   <div class="wp-block-vgg-lrn-blocks-team-member"><h4 class="wp-block-mytheme-blocks-team-member__title">Member2</h4><p class="wp-block-mytheme-blocks-team-member__info">assistant</p></div>
+   <!-- /wp:vgg-lrn-blocks/team-member -->
+</div>
+<!-- /wp:vgg-lrn-blocks/team-members -->

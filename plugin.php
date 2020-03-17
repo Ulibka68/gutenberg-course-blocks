@@ -1,8 +1,8 @@
 <?php
 /* 
-* Plugin Name: mytheme-blocks
+* Plugin Name: VGG gutenberg learn blocks
 * Plugin URI: https://alialaa.com/
-* Description: Blocks for mytheme.
+* Description: Набор первых учебных блоков Гутенберг
 * Author: alialla 
 * Author URI https://alialaa.com/
 */
@@ -20,8 +20,8 @@ function mytheme_blocks_categories( $categories, $post ){
             array(
                 'slug' => VggGutenConst::SLUG_THEME_CATEGORY ,
                 'title'=> __(VggGutenConst::THEME_CATEGORY, VggGutenConst::TRANSLATION_DOMAIN),
-                'icon' => 'businessman'
-            )
+                'icon' => 'palmtree'
+             )
         )
             );
 }
@@ -45,6 +45,8 @@ function mytheme_blocks_register_block_type($block, $options = array ()) {
     );
 }
 
+
+
 function mytheme_blocks_register() { 
     
     wp_register_script(
@@ -64,7 +66,7 @@ function mytheme_blocks_register() {
         plugins_url('dist/editor.css', __FILE__),
         array('wp-edit-blocks')   
     );
-
+    
     wp_register_style(
         VggGutenConst::NAMESPACE . '-style',
         plugins_url('dist/style.css', __FILE__)

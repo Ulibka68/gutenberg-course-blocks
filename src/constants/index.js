@@ -9,6 +9,7 @@ class VggGutenConst {
     static BLK_NAME_TEAM_MEMBERS = "/team-members";
     static BLK_NAME_TEAM_MEMBER = "/team-member";
     static BLK_NAME_SECOND = "/secondblock";
+    static BLK_NAME_RENDERBLK = "/renderblock";
 
 }
 

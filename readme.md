@@ -44,3 +44,6 @@ Creating dynamic blocks
 https://developer.wordpress.org/block-editor/tutorials/block-tutorial/creating-dynamic-blocks/
 
 https://developer.wordpress.org/block-editor/developers/filters/block-filters/#removing-blocks
+
+
+https://pantheon.io/blog/webinar-recap-extending-gutenberg-josh-pollock

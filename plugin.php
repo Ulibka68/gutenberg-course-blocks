@@ -30,7 +30,7 @@ add_filter('block_categories','mytheme_blocks_categories',10,2);
 
 function mytheme_blocks_register_block_type($block, $options = array ()) {
     register_block_type(
-        VggGutenConst::NAMESPACE . '/' .$block,
+        VggGutenConst::NAMESPACE . $block,
         array_merge(
             array(
                 'editor_script' => VggGutenConst::NAMESPACE . '-editor-script',
@@ -73,7 +73,8 @@ function mytheme_blocks_register() {
     );
     
     // mytheme_blocks_register_block_type('firstblock');
-    mytheme_blocks_register_block_type('secondblock');
+    mytheme_blocks_register_block_type(vggGutenConst::BLK_NAME_SECOND);
+    mytheme_blocks_register_block_type(vggGutenConst::BLK_NAME_RENDERBLK);
 }
 
 add_action('init', 'mytheme_blocks_register');

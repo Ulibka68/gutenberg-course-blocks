@@ -9,4 +9,7 @@ class VggGutenConst
     const SLUG_THEME_CATEGORY = 'vgg-theme-category';
     // const NAMESPACE = 'mytheme-blocks';
     const NAMESPACE = 'vgg-lrn-blocks';
+
+    const BLK_NAME_SECOND = "/secondblock";
+    const BLK_NAME_RENDERBLK = "/renderblock";
 }

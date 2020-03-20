@@ -47,3 +47,11 @@ https://developer.wordpress.org/block-editor/developers/filters/block-filters/#r
 
 
 https://pantheon.io/blog/webinar-recap-extending-gutenberg-josh-pollock
+
+
+https://github.com/CalderaWP/Caldera-Forms
+
+
+Пример регистрации своего rest api и получения постов
+https://github.com/humanmade/hm-gutenberg-tools/blob/master/inc/endpoints/class-post-select-controller.php
+https://github.com/humanmade/hm-gutenberg-tools

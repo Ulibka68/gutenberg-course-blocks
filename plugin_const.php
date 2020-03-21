@@ -3,7 +3,7 @@
 class VggGutenConst
 {
     // файл для трансляции
-    const TRANSLATION_DOMAIN = 'gutenblock_vgg';
+    
     const THEME_CATEGORY = 'VGG блоки';
     const SLUG_THEME_CATEGORY = 'mytheme-category';
     // const SLUG_THEME_CATEGORY = 'vgg-theme-category';
@@ -15,6 +15,7 @@ class VggGutenConst
     const CATEGORY_BLK_NAME = 'VGG блоки';
     const CATEGORY_BLK_NAME_ICON = 'wordpress';
 
+    // ******** название блоков **************
     const BLK_NAME_SECOND = "/secondblock";
     const BLK_NAME_RENDERBLK = "/renderblock";
     const BLK_NAME_TEAM_MEMBER = "/team-member";

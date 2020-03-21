@@ -24,5 +24,11 @@ module.exports = {
         "react/react-in-jsx-scope": "off",
         "react/display-name": "off",
         "react/prop-types": "off"
+    },
+    "settings": {
+        "react": {
+        "version": "detect"
+        }
     }
+      
 };

@@ -12,4 +12,7 @@ class VggGutenConst
 
     const BLK_NAME_SECOND = "/secondblock";
     const BLK_NAME_RENDERBLK = "/renderblock";
+    const BLK_NAME_TEAM_MEMBER = "/team-member";
+    const BLK_NAME_TEAM_MEMBERS = "/team-members";
+    
 }

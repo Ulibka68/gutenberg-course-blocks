@@ -1,5 +1,5 @@
 {
-    "name": "mytheme-blocks",
+    "name": "Гайрат изучение блоков Гутенберг",
     "version": "1.0.0",
     "description": "",
     "main": "index.js",
@@ -24,7 +24,7 @@
             ]
         }
     },
-    "author": "",
+    "author": "ALI",
     "license": "ISC",
     "bugs": {
         "url": "https://github.com/alialaa/gutenberg-course-webpack/issues"

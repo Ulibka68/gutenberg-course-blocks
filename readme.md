@@ -55,3 +55,20 @@ https://github.com/CalderaWP/Caldera-Forms
 Пример регистрации своего rest api и получения постов
 https://github.com/humanmade/hm-gutenberg-tools/blob/master/inc/endpoints/class-post-select-controller.php
 https://github.com/humanmade/hm-gutenberg-tools
+
+
+
+
+Стили
+add_action( 'enqueue_block_assets', array( $this, 'blocks_assets' ) );
+wp_register_style( 'kadence-blocks-rowlayout', KADENCE_BLOCKS_URL . 'dist/blocks/row.style.build.css', array(), KADENCE_BLOCKS_VERSION );
+
+
+if ( ! wp_style_is( 'kadence-blocks-rowlayout', 'enqueued' ) ) {
+			wp_enqueue_style( 'kadence-blocks-rowlayout' );
+		}
+		
+
+add_action( 'plugins_loaded', 'kadence_blocks_init' );
+	add_action( 'init', 'kadence_gutenberg_editor_assets' );
+	wp_register_style( 'kadence-blocks-editor-css',

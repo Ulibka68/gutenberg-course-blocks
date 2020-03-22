@@ -1,6 +1,6 @@
 <?php
 /* 
-* Plugin Name: VGG gutenberg learn blocks
+* Plugin Name: VGG набор блоков Гутенберг
 * Plugin URI: https://alialaa.com/
 * Description: Набор первых учебных блоков Гутенберг
 * Author: alialla 
@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH' )) {
     exit;
 }
 
-require_once ('plugin_const.php');
+require_once ('inc/plugin_const.php');
 
 function mytheme_blocks_categories( $categories, $post ){
     return array_merge(
@@ -29,6 +29,8 @@ function mytheme_blocks_categories( $categories, $post ){
 add_filter('block_categories','mytheme_blocks_categories',10,2);
 
 function mytheme_blocks_register_block_type($block, $options = array ()) {
+    error_log('mytheme_blocks_register_block_type');
+
     register_block_type(
         VggGutenConst::NAMESPACE . $block,
         array_merge(
@@ -48,6 +50,7 @@ function mytheme_blocks_register_block_type($block, $options = array ()) {
 
 
 function mytheme_blocks_register() { 
+    error_log('mytheme_blocks_register');
     
     wp_register_script(
         VggGutenConst::NAMESPACE . '-editor-script',
@@ -75,6 +78,9 @@ function mytheme_blocks_register() {
     // mytheme_blocks_register_block_type('firstblock');
     mytheme_blocks_register_block_type(vggGutenConst::BLK_NAME_SECOND);
     mytheme_blocks_register_block_type(vggGutenConst::BLK_NAME_RENDERBLK);
+    mytheme_blocks_register_block_type(vggGutenConst::BLK_NAME_TEAM_MEMBER);
+    mytheme_blocks_register_block_type(vggGutenConst::BLK_NAME_TEAM_MEMBERS);
+    
 }
 
 add_action('init', 'mytheme_blocks_register');

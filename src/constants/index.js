@@ -1,6 +1,6 @@
 class VggGutenConst {
-    static TRANSLATION_DOMAIN = 'gutenblock_vgg';
-    static THEME_CATEGORY = 'VGG блоки';
+    
+    // static THEME_CATEGORY = 'VGG блоки';
     static NAMESPACE = 'mytheme-blocks';
     // static NAMESPACE = 'vgg-lrn-blocks';
     static SLUG_THEME_CATEGORY = 'mytheme-category';

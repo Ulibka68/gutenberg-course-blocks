@@ -4,7 +4,7 @@ import { __ } from "@wordpress/i18n";
 import { PanelBody, TextControl } from "@wordpress/components";
 import { withSelect, withDispatch } from "@wordpress/data";
 import { compose } from "@wordpress/compose";
-import VggGutenConst from "../../constants";
+import VggGutenConst from "../constants";
 
 let PluginMetaFields = props => {
     return (

@@ -4,6 +4,7 @@ import { __ } from "@wordpress/i18n";
 import { decodeEntities } from "@wordpress/html-entities";
 import { RangeControl, PanelBody, SelectControl } from "@wordpress/components";
 import { InspectorControls } from "@wordpress/editor";
+import VggGutenConst from "../../constants";
 
 class LatestPostsEdit extends Component {
     onChangeNumberOfPosts = numberOfPosts => {
@@ -18,10 +19,10 @@ class LatestPostsEdit extends Component {
         return (
             <>
                 <InspectorControls>
-                    <PanelBody title={__("Posts Settings", "mytheme-blocks")}>
+                    <PanelBody title={__("Posts Settings", VggGutenConst.NAMESPACE)}>
                         <SelectControl
                             multiple
-                            label={__("categories", "mytheme-blocks")}
+                            label={__("categories", VggGutenConst.NAMESPACE)}
                             onChange={this.onChangeCategories}
                             options={
                                 categories &&
@@ -33,7 +34,7 @@ class LatestPostsEdit extends Component {
                             value={postCategories && postCategories.split(",")}
                         />
                         <RangeControl
-                            label={__("Number of Posts", "mytheme-blocks")}
+                            label={__("Number of Posts", VggGutenConst.NAMESPACE)}
                             value={numberOfPosts}
                             onChange={this.onChangeNumberOfPosts}
                             min={1}
@@ -59,8 +60,8 @@ class LatestPostsEdit extends Component {
                     <div>
                         {" "}
                         {posts
-                            ? __("No Posts Found", "mytheme-blocks")
-                            : __("Loading...", "mytheme-blocks")}{" "}
+                            ? __("No Posts Found", VggGutenConst.NAMESPACE)
+                            : __("Loading...", VggGutenConst.NAMESPACE)}{" "}
                     </div>
                 )}
             </>

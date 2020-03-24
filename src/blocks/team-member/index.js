@@ -5,6 +5,11 @@ import { __ } from "@wordpress/i18n";
 import edit from "./edit";
 import { RichText } from "@wordpress/editor";
 import { Dashicon } from "@wordpress/components";
+import VggGutenConst from "../../constants";
+
+function wp_selector_name(end_txt) {
+    return "wp-block-" + VggGutenConst.NAMESPACE + "-" + VggGutenConst.BLK_NAME_TEAM_MEMBER.slice(0,-1) + end_txt;
+}
 
 const attributes = {
     title: {
@@ -37,7 +42,7 @@ const attributes = {
         type: "array",
         default: [],
         source: "query",
-        selector: ".wp-block-mytheme-blocks-team-member__social ul li",
+        selector: "." + wp_selector_name( "__social ul li"),
         query: {
             icon: {
                 source: "attribute",
@@ -52,26 +57,26 @@ const attributes = {
     }
 };
 
-registerBlockType("mytheme-blocks/team-member", {
-    title: __("Team Member", "mytheme-blocks"),
+registerBlockType( VggGutenConst.NAMESPACE +  VggGutenConst.BLK_NAME_TEAM_MEMBER , {
+    title: __("Team Member", VggGutenConst.NAMESPACE),
 
-    description: __(" Block showing a Team Member. ", "mytheme-blocks"),
+    description: __(" Block showing a Team Member. ", VggGutenConst.NAMESPACE),
 
     icon: "admin-users",
 
-    parent: ["mytheme-blocks/team-members"],
+    parent: [VggGutenConst.NAMESPACE + VggGutenConst.BLK_NAME_TEAM_MEMBERS ],
 
     supports: {
         reusable: false,
         html: false
     },
 
-    category: "mytheme-category",
+    category: VggGutenConst.SLUG_THEME_CATEGORY,
 
     keywords: [
-        __("team", "mytheme-blocks"),
-        __("member", "mytheme-blocks"),
-        __("person", "mytheme-blocks")
+        __("team", VggGutenConst.NAMESPACE),
+        __("member", VggGutenConst.NAMESPACE),
+        __("person", VggGutenConst.NAMESPACE)
     ],
 
     attributes,
@@ -89,14 +94,14 @@ registerBlockType("mytheme-blocks/team-member", {
                 )}
                 {title && (
                     <RichText.Content
-                        className={"wp-block-mytheme-blocks-team-member__title"}
+                        className={ wp_selector_name(VggGutenConst.BLK_NAME_TEAM_MEMBER, "__title") }
                         tagName="h4"
                         value={title}
                     />
                 )}
                 {info && (
                     <RichText.Content
-                        className={"wp-block-mytheme-blocks-team-member__info"}
+                        className={ wp_selector_name(VggGutenConst.BLK_NAME_TEAM_MEMBER, "__info")}
                         tagName="p"
                         value={info}
                     />
@@ -105,7 +110,7 @@ registerBlockType("mytheme-blocks/team-member", {
                 {social.length > 0 && (
                     <div
                         className={
-                            "wp-block-mytheme-blocks-team-member__social"
+                            wp_selector_name(VggGutenConst.BLK_NAME_TEAM_MEMBER, "__social")
                         }
                     >
                         <ul>

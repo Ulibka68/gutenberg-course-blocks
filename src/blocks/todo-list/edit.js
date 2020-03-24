@@ -1,6 +1,7 @@
 import { Component } from "@wordpress/element";
 import { withSelect, withDispatch } from "@wordpress/data";
 import { compose } from "@wordpress/compose";
+import VggGutenConst from "../../constants";
 
 class ReduxTodoEdit extends Component {
     state = {
@@ -56,16 +57,16 @@ class ReduxTodoEdit extends Component {
 export default compose([
     withSelect(select => {
         return {
-            todos: select("mytheme-blocks/todo").getTodos()
+            todos: select( VggGutenConst.NAMESPACE+ "/todo").getTodos()
         };
     }),
     withDispatch(dispatch => {
         return {
             addToDo: item => {
-                dispatch("mytheme-blocks/todo").addToDo(item);
+                dispatch(VggGutenConst.NAMESPACE+ "/todo").addToDo(item);
             },
             toggleToDo: (todo, index) => {
-                dispatch("mytheme-blocks/todo").toggleToDo(todo, index);
+                dispatch(VggGutenConst.NAMESPACE+ "/todo").toggleToDo(todo, index);
             }
         };
     })

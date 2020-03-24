@@ -1,15 +1,16 @@
 import { registerBlockType } from "@wordpress/blocks";
 import { __ } from "@wordpress/i18n";
 import { TextControl } from "@wordpress/components";
+import VggGutenConst from "../../constants";
 
-registerBlockType("mytheme-blocks/meta", {
-    title: __(" Meta Block ", "mytheme-blocks"),
+registerBlockType( VggGutenConst.NAMESPACE+VggGutenConst.BLK_NAME_META, {
+    title: __(" Meta Block ", VggGutenConst.NAMESPACE),
 
-    description: __("Block for editing meta field", "mytheme-blocks"),
+    description: __("Block for editing meta field", VggGutenConst.NAMESPACE),
 
     icon: "admin-tools",
 
-    category: "mytheme-category",
+    category: VggGutenConst.SLUG_THEME_CATEGORY,
 
     attributes: {
         post_subtitle: {
@@ -26,7 +27,7 @@ registerBlockType("mytheme-blocks/meta", {
         return (
             <div>
                 <TextControl
-                    label={__("Post Subtitle", "mytheme-blocks")}
+                    label={__("Post Subtitle", VggGutenConst.NAMESPACE)}
                     value={attributes.post_subtitle}
                     onChange={onChange}
                 />

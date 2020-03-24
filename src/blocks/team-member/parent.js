@@ -2,6 +2,7 @@ import { registerBlockType, createBlock } from "@wordpress/blocks";
 import { __ } from "@wordpress/i18n";
 import { InnerBlocks, InspectorControls } from "@wordpress/editor";
 import { panelBody, RangeControl } from "@wordpress/components";
+import VggGutenConst from "../../constants";
 
 const attributes = {
     columns: {
@@ -10,14 +11,14 @@ const attributes = {
     }
 };
 
-registerBlockType("mytheme-blocks/team-members", {
-    title: __("Team Members", "mytheme-blocks"),
+registerBlockType(VggGutenConst.NAMESPACE +  VggGutenConst.BLK_NAME_TEAM_MEMBERS, {
+    title: __("Team Members", VggGutenConst.NAMESPACE),
 
-    description: __("Block showing a Team Members.", "mytheme-blocks"),
+    description: __("Block showing a Team Members.", VggGutenConst.NAMESPACE),
 
     icon: "grid-view",
 
-    category: "mytheme-category",
+    category: VggGutenConst.SLUG_THEME_CATEGORY,
 
     supports: {
         html: false,
@@ -31,14 +32,14 @@ registerBlockType("mytheme-blocks/team-members", {
                 blocks: ["core/gallery"],
                 transform: ({ columns, images }) => {
                     let inner = images.map(({ alt, id, url }) =>
-                        createBlock("mytheme-blocks/team-member", {
+                        createBlock(VggGutenConst.NAMESPACE +  VggGutenConst.BLK_NAME_TEAM_MEMBER, {
                             alt,
                             id,
                             url
                         })
                     );
                     return createBlock(
-                        "mytheme-blocks/team-members",
+                        VggGutenConst.NAMESPACE +  VggGutenConst.BLK_NAME_TEAM_MEMBERS,
                         {
                             columns: columns
                         },
@@ -52,14 +53,14 @@ registerBlockType("mytheme-blocks/team-members", {
                 isMultiBlock: true,
                 transform: attributes => {
                     let inner = attributes.map(({ alt, id, url }) =>
-                        createBlock("mytheme-blocks/team-member", {
+                        createBlock(VggGutenConst.NAMESPACE +  VggGutenConst.BLK_NAME_TEAM_MEMBER, {
                             alt,
                             id,
                             url
                         })
                     );
                     return createBlock(
-                        "mytheme-blocks/team-members",
+                        VggGutenConst.NAMESPACE +  VggGutenConst.BLK_NAME_TEAM_MEMBERS,
                         {
                             columns: 3
                         },
@@ -71,9 +72,9 @@ registerBlockType("mytheme-blocks/team-members", {
     },
 
     keywords: [
-        __("team", "mytheme-blocks"),
-        __("member", "mytheme-blocks"),
-        __("person", "mytheme-blocks")
+        __("team", VggGutenConst.NAMESPACE),
+        __("member", VggGutenConst.NAMESPACE),
+        __("person", VggGutenConst.NAMESPACE)
     ],
 
     attributes,
@@ -85,7 +86,7 @@ registerBlockType("mytheme-blocks/team-members", {
                 <InspectorControls>
                     <panelBody>
                         <RangeControl
-                            label={__("column", "mytheme-blocks")}
+                            label={__("column", VggGutenConst.NAMESPACE)}
                             value={columns}
                             onChange={columns => setAttributes({ columns })}
                             min={1}
@@ -94,10 +95,10 @@ registerBlockType("mytheme-blocks/team-members", {
                     </panelBody>
                 </InspectorControls>
                 <InnerBlocks
-                    allowedBlocks={["mytheme-blocks/team-member"]}
+                    allowedBlocks={[VggGutenConst.NAMESPACE +  VggGutenConst.BLK_NAME_TEAM_MEMBER]}
                     template={[
-                        ["mytheme-blocks/team-member"],
-                        ["mytheme-blocks/team-member"]
+                        [VggGutenConst.NAMESPACE +  VggGutenConst.BLK_NAME_TEAM_MEMBER],
+                        [VggGutenConst.NAMESPACE +  VggGutenConst.BLK_NAME_TEAM_MEMBER]
                     ]}
                 />
             </div>

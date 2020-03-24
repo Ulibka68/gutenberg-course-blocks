@@ -4,18 +4,19 @@ import { __ } from "@wordpress/i18n";
 import { PanelBody, TextControl } from "@wordpress/components";
 import { withSelect, withDispatch } from "@wordpress/data";
 import { compose } from "@wordpress/compose";
+import VggGutenConst from "../../constants";
 
 let PluginMetaFields = props => {
     return (
         <>
             <PanelBody
-                title={__("Meta Fields Panel", "mytheme-blocks")}
+                title={__("Meta Fields Panel", VggGutenConst.NAMESPACE)}
                 icon="admin-post"
                 intialOpen={true}
             >
                 <TextControl
                     value={props.subtitle}
-                    label={__("Post Subtitle", "mytheme-blocks")}
+                    label={__("Post Subtitle", VggGutenConst.NAMESPACE)}
                     onChange={value => props.onSubtitleChange(value)}
                 />
             </PanelBody>
@@ -42,19 +43,19 @@ PluginMetaFields = compose([
     })
 ])(PluginMetaFields);
 
-registerPlugin("mytheme-blocks-sidebar", {
+registerPlugin(VggGutenConst.NAMESPACE+"-sidebar", {
     icon: "smiley",
     render: () => {
         return (
             <>
-                <PluginSidebarMoreMenuItem target="mytheme-blocks-sidebar">
-                    {__("Meta Options", "mytheme-blocks")}
+                <PluginSidebarMoreMenuItem target={VggGutenConst.NAMESPACE+"-sidebar"}>
+                    {__("Meta Options", VggGutenConst.NAMESPACE)}
                 </PluginSidebarMoreMenuItem>
 
                 <PluginSidebar
-                    name="mytheme-blocks-sidebar"
+                    name={VggGutenConst.NAMESPACE+"-sidebar"}
                     icon="admin-post"
-                    title={__("Meta Options", "mytheme-blocks")}
+                    title={__("Meta Options", VggGutenConst.NAMESPACE)}
                 >
                     <PluginMetaFields />
                 </PluginSidebar>

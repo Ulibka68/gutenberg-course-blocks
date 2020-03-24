@@ -1,11 +1,12 @@
 import { registerBlockType } from "@wordpress/blocks";
 import { __ } from "@wordpress/i18n";
 import edit from "./edit";
+import VggGutenConst from "../../constants";
 
 registerBlockType("mytheme-blocks/redux", {
-    title: __("Redux Test", "mytheme-blocks"),
+    title: __("Redux Test", VggGutenConst.NAMESPACE),
 
-    description: __("redux test blocks.", "mytheme-blocks"),
+    description: __("redux test blocks.", VggGutenConst.NAMESPACE),
 
     icon: (
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
@@ -17,7 +18,7 @@ registerBlockType("mytheme-blocks/redux", {
         </svg>
     ),
 
-    category: "mytheme-category",
+    category: VggGutenConst.SLUG_THEME_CATEGORY,
 
     edit: edit,
 

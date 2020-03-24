@@ -28,6 +28,12 @@ import {
     SortableElement,
     arrayMove
 } from "react-sortable-hoc";
+import VggGutenConst from "../../constants";
+
+function wp_selector_name(end_txt) {
+    return "wp-block-" + VggGutenConst.NAMESPACE + "-" +VggGutenConst.BLK_NAME_TEAM_MEMBER.slice(0,-1) + end_txt;
+}
+
 
 class TeamMemberEdit extends Component {
     state = {
@@ -182,13 +188,13 @@ class TeamMemberEdit extends Component {
                     {isSelected && (
                         <li
                             className={
-                                "wp-block-mytheme-blocks-team-member__addIconLI"
+                                wp_selector_name("__addIconLI")
                             }
                         >
-                            <Tooltip text={__("Add Item", "mytheme-blocks")}>
+                            <Tooltip text={__("Add Item", VggGutenConst.NAMESPACE)}>
                                 <button
                                     className={
-                                        "wp-block-mytheme-blocks-team-member__addIcon"
+                                        wp_selector_name("__addIcon")
                                     }
                                     onClick={this.addNewLink}
                                 >
@@ -203,12 +209,12 @@ class TeamMemberEdit extends Component {
         return (
             <>
                 <InspectorControls>
-                    <PanelBody title={__("Image Settings", "mytheme-blocks")}>
+                    <PanelBody title={__("Image Settings", VggGutenConst.NAMESPACE)}>
                         {url && !isBlobURL(url) && (
                             <TextareaControl
                                 label={__(
                                     "Alt Text (Alternative Text)",
-                                    "mytheme-blocks"
+                                    VggGutenConst.NAMESPACE
                                 )}
                                 value={alt}
                                 onChange={this.updateAlt}
@@ -219,7 +225,7 @@ class TeamMemberEdit extends Component {
                         )}
                         {id && (
                             <SelectControl
-                                label={__("Image Size", "mytheme-blocks")}
+                                label={__("Image Size", VggGutenConst.NAMESPACE)}
                                 options={this.getImageSizes()}
                                 onChange={this.onImageSizeChange}
                                 value={url}
@@ -242,7 +248,7 @@ class TeamMemberEdit extends Component {
                                                     className="components-icon-button components-toolbar__control"
                                                     label={__(
                                                         "Edit Image",
-                                                        "mytheme-blocks"
+                                                        VggGutenConst.NAMESPACE
                                                     )}
                                                     onClick={open}
                                                     icon="edit"
@@ -254,7 +260,7 @@ class TeamMemberEdit extends Component {
                             )}
                             <IconButton
                                 className="components-icon-button components-toolbar__control"
-                                label={__("Remove Image", "mytheme-blocks")}
+                                label={__("Remove Image", VggGutenConst.NAMESPACE)}
                                 onClick={this.removeImage}
                                 icon="trash"
                             />
@@ -279,24 +285,24 @@ class TeamMemberEdit extends Component {
                         />
                     )}
                     <RichText
-                        className={"wp-block-mytheme-blocks-team-member__title"}
+                        className={wp_selector_name("__title")}
                         tagName="h4"
                         onChange={this.onChangeTitle}
                         value={title}
-                        placeholder={__("Member Name", "mytheme-blocks")}
+                        placeholder={__("Member Name", VggGutenConst.NAMESPACE)}
                         formatingControls={[]}
                     />
                     <RichText
-                        className={"wp-block-mytheme-blocks-team-member__info"}
+                        className={wp_selector_name("__info")}
                         tagName="p"
                         onChange={this.onChangeInfo}
                         value={info}
-                        placeholder={__("Member Info", "mytheme-blocks")}
+                        placeholder={__("Member Info", VggGutenConst.NAMESPACE)}
                         formatingControls={[]}
                     />
                     <div
                         className={
-                            "wp-block-mytheme-blocks-team-member__social"
+                            wp_selector_name("__social")
                         }
                     >
                         <SortableList
@@ -334,7 +340,7 @@ class TeamMemberEdit extends Component {
                                     }
                                 >
                                     <Tooltip
-                                        text={__("Add Item", "mytheme-blocks")}
+                                        text={__("Add Item", VggGutenConst.NAMESPACE)}
                                     >
                                         <button
                                             className={
@@ -352,28 +358,28 @@ class TeamMemberEdit extends Component {
                     {this.state.selectedLink !== null && (
                         <div
                             className={
-                                "wp-block-mytheme-blocks-team-member__linkForm"
+                                wp_selector_name("__linkForm")
                             }
                         >
                             <TextControl
-                                label={__("Icon", "mytheme-blocks")}
+                                label={__("Icon", VggGutenConst.NAMESPACE)}
                                 value={social[this.state.selectedLink].icon}
                                 onChange={icon =>
                                     this.updateSocialItem("icon", icon)
                                 }
                             />
                             <URLInput
-                                label={__("URL", "mytheme-blocks")}
+                                label={__("URL", VggGutenConst.NAMESPACE)}
                                 value={social[this.state.selectedLink].link}
                                 onChange={url =>
                                     this.updateSocialItem("link", url)
                                 }
                             />
                             <a
-                                className="wp-block-mytheme-blocks-team-member__removeLink"
+                                className={wp_selector_name("__removeLink")}
                                 onClick={this.removeLink}
                             >
-                                {__("Remove Link", "mytheme-blocks")}
+                                {__("Remove Link", VggGutenConst.NAMESPACE)}
                             </a>
                         </div>
                     )}

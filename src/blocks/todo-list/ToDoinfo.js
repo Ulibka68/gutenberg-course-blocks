@@ -1,6 +1,7 @@
 import { registerBlockType } from "@wordpress/blocks";
 import { __ } from "@wordpress/i18n";
 import { withSelect } from "@wordpress/data";
+import VggGutenConst from "../../constants";
 
 let TodoCount = props => {
     return (
@@ -14,20 +15,20 @@ let TodoCount = props => {
 
 TodoCount = withSelect(select => {
     return {
-        total: select("mytheme-blocks/todo").getToDosNumber(),
-        todo: select("mytheme-blocks/todo").getUnDoneToDosNumber(),
-        done: select("mytheme-blocks/todo").getDoneToDosNumber()
+        total: select(VggGutenConst.NAMESPACE+"/todo").getToDosNumber(),
+        todo: select(VggGutenConst.NAMESPACE+"/todo").getUnDoneToDosNumber(),
+        done: select(VggGutenConst.NAMESPACE+"/todo").getDoneToDosNumber()
     };
 })(TodoCount);
 
-registerBlockType("mytheme-blocks/todo-list-count", {
-    title: __("Redux Todo Count", "mytheme-blocks"),
+registerBlockType(VggGutenConst.NAMESPACE + VggGutenConst.BLK_NAME_TODO_LIST_COUNT, {
+    title: __("Redux Todo Count", VggGutenConst.NAMESPACE),
 
-    description: __("Redux Todo Count", "mytheme-blocks"),
+    description: __("Redux Todo Count", VggGutenConst.NAMESPACE),
 
     icon: "editor-ul",
 
-    category: "mytheme-category",
+    category: VggGutenConst.SLUG_THEME_CATEGORY,
 
     edit() {
         return <TodoCount />;

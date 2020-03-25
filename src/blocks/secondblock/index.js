@@ -1,10 +1,11 @@
 import "./styles.editor.scss";
-import { registerBlockType, createBlock } from "@wordpress/blocks";
+// import { registerBlockType, createBlock } from "@wordpress/blocks";
+import { registerBlockType } from "@wordpress/blocks";
 import { __ } from "@wordpress/i18n";
 import { RichText, getColorClassName } from "@wordpress/editor";
 import Edit from "./edit";
 import classnames from "classnames";
-import { omit } from "lodash";
+// import { omit } from "lodash";
 import VggGutenConst from "../../constants";
 //import { PanelBody } from "@wordpress/components";
 
@@ -37,8 +38,8 @@ const attributes = {
         default: false
     },
     shadowOpactiy: {
-        type: "number",
-        default: 0.3
+        type: "number"
+        // ,default: 0.3
     }
 };
 
@@ -76,165 +77,6 @@ registerBlockType(VggGutenConst.NAMESPACE + VggGutenConst.BLK_NAME_SECOND, {
     ],
 
     attributes,
-    deprecated: [
-        {
-            attributes: omit(
-                {
-                    ...attributes
-                },
-                ["textAlignment"]
-            ),
-            migrate: attributes => {
-                return omit(
-                    {
-                        ...attributes,
-                        textAlignment: attributes.alignment
-                    },
-                    ["alignment"]
-                );
-            },
-            save: ({ attributes }) => {
-                const {
-                    content,
-                    alignment,
-                    backgroundColor,
-                    textColor,
-                    customBackgroundColor,
-                    customTextColor,
-                    shadow,
-                    shadowOpacity
-                } = attributes;
-
-                const backgroundClass = getColorClassName(
-                    "background-color",
-                    backgroundColor
-                );
-                const textClass = getColorClassName("color", textColor);
-
-                const classes = classnames({
-                    [backgroundClass]: backgroundClass,
-                    [textClass]: textClass,
-                    "has-shadow": shadow,
-                    [`shadow-opacity-${shadowOpacity * 100}`]: shadowOpacity
-                });
-
-                return (
-                    <RichText.Content
-                        tagName="h4"
-                        className={classes}
-                        value={content}
-                        style={{
-                            textAlign: alignment,
-                            backgroundColor: backgroundClass
-                                ? undefined
-                                : customBackgroundColor,
-                            color: textClass ? undefined : customTextColor
-                        }}
-                    />
-                );
-            }
-        },
-        {
-            //supports
-            attributes: omit(
-                {
-                    ...attributes,
-                    content: {
-                        type: "string",
-                        source: "html",
-                        selector: "p"
-                    }
-                },
-                ["textAlignment"]
-            ),
-            migrate: attributes => {
-                return omit(
-                    {
-                        ...attributes,
-                        textAlignment: attributes.alignment
-                    },
-                    ["alignment"]
-                );
-            },
-            save: ({ attributes }) => {
-                const {
-                    content,
-                    alignment,
-                    backgroundColor,
-                    textColor,
-                    customBackgroundColor,
-                    customTextColor,
-                    shadow,
-                    shadowOpacity
-                } = attributes;
-
-                const backgroundClass = getColorClassName(
-                    "background-color",
-                    backgroundColor
-                );
-                const textClass = getColorClassName("color", textColor);
-
-                const classes = classnames({
-                    [backgroundClass]: backgroundClass,
-                    [textClass]: textClass,
-                    "has-shadow": shadow,
-                    [`shadow-opacity-${shadowOpacity * 100}`]: shadowOpacity
-                });
-
-                return (
-                    <RichText.Content
-                        tagName="p"
-                        className={classes}
-                        value={content}
-                        style={{
-                            textAlign: alignment,
-                            backgroundColor: backgroundClass
-                                ? undefined
-                                : customBackgroundColor,
-                            color: textClass ? undefined : customTextColor
-                        }}
-                    />
-                );
-            }
-        }
-    ],
-    transforms: {
-        from: [
-            {
-                type: "block",
-                blocks: ["core/paragraph"],
-                transform: ({ content, align }) => {
-                    return createBlock(VggGutenConst.NAMESPACE + VggGutenConst.BLK_NAME_SECOND, {
-                        content: content,
-                        textAlignment: align
-                    });
-                }
-            },
-            {
-                type: "prefix",
-                prefix: "#",
-                transform: () => {
-                    return createBlock(VggGutenConst.NAMESPACE + VggGutenConst.BLK_NAME_SECOND);
-                }
-            }
-        ],
-        to: [
-            {
-                type: "block",
-                blocks: ["core/paragraph"],
-                isMatch: ({ content }) => {
-                    if (content) return true;
-                    return false;
-                },
-                transform: ({ content, textAlignment }) => {
-                    return createBlock("core/paragraph", {
-                        content: content,
-                        align: textAlignment
-                    });
-                }
-            }
-        ]
-    },
     edit: Edit,
     save: ({ attributes }) => {
         const {
@@ -260,6 +102,11 @@ registerBlockType(VggGutenConst.NAMESPACE + VggGutenConst.BLK_NAME_SECOND, {
             "has-shadow": shadow,
             [`shadow-opacity-${shadowOpacity * 100}`]: shadowOpacity
         });
+
+        console.log("save attributes", attributes);
+        // eslint-disable-next-line no-debugger
+        // debugger;
+
 
         return (
             <RichText.Content

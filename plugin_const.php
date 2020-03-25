@@ -4,16 +4,16 @@ class VggGutenConst
 {
     // файл для трансляции
     
-    const THEME_CATEGORY = 'VGG блоки';
-    const SLUG_THEME_CATEGORY = 'mytheme-category';
-    // const SLUG_THEME_CATEGORY = 'vgg-theme-category';
-    const NAMESPACE = 'mytheme-blocks';
-    // const NAMESPACE = 'vgg-lrn-blocks';
+    
+    // const SLUG_THEME_CATEGORY = 'mytheme-category';
+    // const NAMESPACE = 'mytheme-blocks';
+    const SLUG_THEME_CATEGORY = 'vgg-theme-category';
+    const NAMESPACE = 'vgg-lrn-blocks';
 
     // ********* Категории ************
     // Название категории блоков в реадкторе
-    const CATEGORY_BLK_NAME = 'VGG блоки';
-    const CATEGORY_BLK_NAME_ICON = 'wordpress';
+    const CATEGORY_BLK_NAME = 'Блоки Гайрат';
+    const CATEGORY_BLK_NAME_ICON = 'palmtree';
 
     // ******** название блоков **************
     const BLK_NAME_SECOND = "/secondblock";

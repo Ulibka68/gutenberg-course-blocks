@@ -1,4 +1,8 @@
-.wp-block-mytheme-blocks-secondblock {
+$blkname : "wp-block-vgg-lrn-blocks-";
+
+// .wp-block-mytheme-blocks-secondblock {
+.#{$blkname}secondblock {
+
     background-color: #524d5b;
     color: #fff;
     border-radius: 5px;

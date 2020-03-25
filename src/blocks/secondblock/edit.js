@@ -27,6 +27,7 @@ class Edit extends Component {
     };
 
     onChangeShadowOpacity = shadowOpacity => {
+        console.log("onChangeShadowOpacity -> shadowOpacity", shadowOpacity)
         this.props.setAttributes({ shadowOpacity });
     };
 
@@ -45,6 +46,13 @@ class Edit extends Component {
             "has-shadow": shadow,
             [`shadow-opacity-${shadowOpacity * 100}`]: shadowOpacity
         });
+
+        // console.log("edit shadowOpacity", shadowOpacity);
+        console.log("edit attributes", attributes);
+
+        // eslint-disable-next-line no-debugger
+        // debugger;
+
         return (
             <>
                 <InspectorControls>

@@ -71,7 +71,8 @@ registerBlockType("mytheme-blocks/secondblock", {
         }
     },
     edit: Edit,
-    save: ({ attributes }) => {
+    save: ({ attributes } ) => {
+        
         const {
             content,
             alignment,
@@ -80,7 +81,8 @@ registerBlockType("mytheme-blocks/secondblock", {
             customBackgroundColor,
             customTextColor,
             shadow,
-            shadowOpacity
+            shadowOpacity,
+            className
         } = attributes;
 
         const backgroundClass = getColorClassName(
@@ -88,6 +90,8 @@ registerBlockType("mytheme-blocks/secondblock", {
             backgroundColor
         );
         const textClass = getColorClassName("color", textColor);
+        
+        
 
         const classes = classnames({
             [backgroundClass]: backgroundClass,
@@ -95,7 +99,9 @@ registerBlockType("mytheme-blocks/secondblock", {
             "has-shadow": shadow,
             [`shadow-opacity-${shadowOpacity * 100}`]: shadowOpacity
         });
-
+        console.log("classes", classes);
+        console.log("className", className);
+        
         return (
             <RichText.Content
                 tagName="p"

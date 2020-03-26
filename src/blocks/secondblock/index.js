@@ -1,7 +1,8 @@
 import "./styles.editor.scss";
 import { registerBlockType } from "@wordpress/blocks";
 import { __ } from "@wordpress/i18n";
-import { RichText, getColorClassName } from "@wordpress/editor";
+// import { RichText, getColorClassName } from "@wordpress/editor";
+import { RichText, getColorClassName } from "@wordpress/block-editor";
 import Edit from "./edit";
 import classnames from "classnames";
 //import { PanelBody } from "@wordpress/components";
@@ -60,13 +61,13 @@ registerBlockType("mytheme-blocks/secondblock", {
         customTextColor: {
             type: "string"
         },
-        shadow: {
-            type: "boolean",
-            default: false
-        },
         shadowOpactiy: {
             type: "number",
             default: 0.3
+        },
+        shadow: {
+            type: "boolean",
+            default: false
         }
     },
     edit: Edit,

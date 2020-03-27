@@ -27,11 +27,14 @@ class Edit extends Component {
     };
 
     onChangeShadowOpacity = shadowOpacity => {
+        // this.props.setAttributes({ shadowOpacity ,className : ''});
         this.props.setAttributes({ shadowOpacity });
     };
 
     render() {
-        //console.log(this.props);
+        
+        console.log('edit:',this.props.attributes);
+        
         const {
             className,
             attributes,

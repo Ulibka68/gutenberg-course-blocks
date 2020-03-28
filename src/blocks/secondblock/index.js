@@ -61,9 +61,9 @@ registerBlockType("mytheme-blocks/secondblock", {
         customTextColor: {
             type: "string"
         },
-        shadowOpactiy: {
-            type: "number",
-            default: 0.3
+        shadowOpacity: {
+            type: "number"
+            // ,default: 0.3
         },
         shadow: {
             type: "boolean",

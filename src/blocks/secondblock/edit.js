@@ -43,7 +43,7 @@ class Edit extends Component {
             backgroundColor,
             textColor
         } = this.props;
-        const { content, alignment, shadow, shadowOpacity } = attributes;
+        const { content, alignment, shadow, shadowOpacity = 0.3 } = attributes;
         const classes = classnames(className, {
             "has-shadow": shadow,
             [`shadow-opacity-${shadowOpacity * 100}`]: shadowOpacity

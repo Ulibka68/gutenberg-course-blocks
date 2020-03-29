@@ -8,7 +8,7 @@ import {
     PanelColorSettings,
     withColors,
     ContrastChecker
-} from "@wordpress/editor";
+} from "@wordpress/block-editor";
 import { RangeControl, PanelBody } from "@wordpress/components";
 import classnames from "classnames";
 import VggGutenConst from "../../constants";

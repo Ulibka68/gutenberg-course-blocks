@@ -1,6 +1,6 @@
 import { registerBlockType, createBlock } from "@wordpress/blocks";
 import { __ } from "@wordpress/i18n";
-import { InnerBlocks, InspectorControls } from "@wordpress/editor";
+import { InnerBlocks, InspectorControls } from "@wordpress/block-editor";
 import { panelBody, RangeControl } from "@wordpress/components";
 import VggGutenConst from "../../constants";
 

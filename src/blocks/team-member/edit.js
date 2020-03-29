@@ -7,7 +7,8 @@ import {
     MediaUploadCheck,
     InspectorControls,
     URLInput
-} from "@wordpress/editor";
+} from "@wordpress/block-editor";
+
 import { __ } from "@wordpress/i18n";
 import { isBlobURL } from "@wordpress/blob";
 import {

@@ -37,7 +37,7 @@ const attributes = {
         type: "boolean",
         default: false
     },
-    shadowOpactiy: {
+    shadowOpacity: {
         type: "number"
         // ,default: 0.3
     }

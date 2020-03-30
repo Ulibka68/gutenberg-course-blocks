@@ -27,7 +27,7 @@ class Edit extends Component {
     };
 
     onChangeShadowOpacity = shadowOpacity => {
-        console.log("onChangeShadowOpacity -> shadowOpacity", shadowOpacity)
+        // console.log("onChangeShadowOpacity -> shadowOpacity", shadowOpacity)
         this.props.setAttributes({ shadowOpacity });
     };
 
@@ -47,11 +47,7 @@ class Edit extends Component {
             [`shadow-opacity-${shadowOpacity * 100}`]: shadowOpacity
         });
 
-        // console.log("edit shadowOpacity", shadowOpacity);
-        console.log("edit attributes", attributes);
-
-        // eslint-disable-next-line no-debugger
-        // debugger;
+        // console.log("edit attributes", attributes);
 
         return (
             <>
@@ -104,12 +100,19 @@ class Edit extends Component {
                         onChange={this.onChangeAlignment}
                     />
                 </BlockControls>
+
+                {/* allowedFormats: Array
+                By default, all registered formats are allowed. 
+                This setting can be used to fine-tune the allowed formats. 
+                Example: [ 'core/bold', 'core/link' ]. */}
+
+                {/*  formattingControls={["bold"]} */}
                 <RichText
                     tagName="p"
                     className={classes}
                     onChange={this.onChangeContent}
                     value={content}
-                    formattingControls={["bold"]}
+                    allowedFormats = {[ 'core/bold']}
                     style={{
                         textAlign: textAlignment,
                         backgroundColor: backgroundColor.color,

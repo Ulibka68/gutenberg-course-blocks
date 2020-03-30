@@ -1,4 +1,14 @@
-.wp-block-mytheme-blocks-team-members {
+// $blks-name : "wp-block-mytheme-blocks-team-members";
+// $blk-name  : "wp-block-mytheme-blocks-team-members";
+$namespace : "vgg-lrn-blocks";
+$blks-nameT : "team-members";
+$blk-nameT  : "team-member";
+
+$blks-name : "wp-block-" + $namespace + "-" + $blks-nameT;
+$blk-name  : "wp-block-" + $namespace + "-" + $blk-nameT;
+
+// .wp-block-mytheme-blocks-team-members {
+.#{$blks-name} {
     display: block;
     margin-left: 0px;
     margin-right: 0px;
@@ -21,7 +31,7 @@
             margin-right: 0;
         }
     }
-    .wp-block-mytheme-blocks-team-member {
+    .#{$blk-name} {
         margin: 0;
         width: auto !important;
     }

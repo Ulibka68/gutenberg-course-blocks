@@ -8,7 +8,7 @@ import { Dashicon } from "@wordpress/components";
 import VggGutenConst from "../../constants";
 
 function wp_selector_name(end_txt) {
-    return "wp-block-" + VggGutenConst.NAMESPACE + "-" + VggGutenConst.BLK_NAME_TEAM_MEMBER.slice(0,-1) + end_txt;
+    return "wp-block-" + VggGutenConst.NAMESPACE + "-" + VggGutenConst.BLK_NAME_TEAM_MEMBER.slice(1) + end_txt;
 }
 
 const attributes = {
@@ -42,7 +42,7 @@ const attributes = {
         type: "array",
         default: [],
         source: "query",
-        selector: "." + wp_selector_name( "__social ul li"),
+        selector: "." + wp_selector_name( "__social  ul li"),
         query: {
             icon: {
                 source: "attribute",
@@ -94,14 +94,14 @@ registerBlockType( VggGutenConst.NAMESPACE +  VggGutenConst.BLK_NAME_TEAM_MEMBER
                 )}
                 {title && (
                     <RichText.Content
-                        className={ wp_selector_name(VggGutenConst.BLK_NAME_TEAM_MEMBER, "__title") }
+                        className={ wp_selector_name( "__title") }
                         tagName="h4"
                         value={title}
                     />
                 )}
                 {info && (
                     <RichText.Content
-                        className={ wp_selector_name(VggGutenConst.BLK_NAME_TEAM_MEMBER, "__info")}
+                        className={ wp_selector_name( "__info")}
                         tagName="p"
                         value={info}
                     />
@@ -110,7 +110,7 @@ registerBlockType( VggGutenConst.NAMESPACE +  VggGutenConst.BLK_NAME_TEAM_MEMBER
                 {social.length > 0 && (
                     <div
                         className={
-                            wp_selector_name(VggGutenConst.BLK_NAME_TEAM_MEMBER, "__social")
+                            wp_selector_name( "__social")
                         }
                     >
                         <ul>

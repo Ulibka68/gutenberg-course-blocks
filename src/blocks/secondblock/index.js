@@ -103,11 +103,6 @@ registerBlockType(VggGutenConst.NAMESPACE + VggGutenConst.BLK_NAME_SECOND, {
             [`shadow-opacity-${shadowOpacity * 100}`]: shadowOpacity
         });
 
-        console.log("save attributes", attributes);
-        // eslint-disable-next-line no-debugger
-        // debugger;
-
-
         return (
             <RichText.Content
                 tagName="h4"

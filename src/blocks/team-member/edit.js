@@ -26,13 +26,14 @@ import {
 import { withSelect } from "@wordpress/data";
 import {
     SortableContainer,
-    SortableElement,
-    arrayMove
+    SortableElement
 } from "react-sortable-hoc";
+
+import arrayMove from 'array-move';
 import VggGutenConst from "../../constants";
 
 function wp_selector_name(end_txt) {
-    return "wp-block-" + VggGutenConst.NAMESPACE + "-" +VggGutenConst.BLK_NAME_TEAM_MEMBER.slice(0,-1) + end_txt;
+    return "wp-block-" + VggGutenConst.NAMESPACE + "-" +VggGutenConst.BLK_NAME_TEAM_MEMBER.slice(1) + end_txt;
 }
 
 
@@ -314,47 +315,7 @@ class TeamMemberEdit extends Component {
                                 this.onSortEnd(oldIndex, newIndex)
                             }
                         />
-                        {/* <ul>
-                            {social.map((item, index) => {
-                                return (
-                                    <li
-                                        key={index}
-                                        onClick={() =>
-                                            this.setState({
-                                                selectedLink: index
-                                            })
-                                        }
-                                        className={
-                                            this.state.selectedLink === index
-                                                ? "is-selected"
-                                                : null
-                                        }
-                                    >
-                                        <Dashicon icon={item.icon} size={16} />
-                                    </li>
-                                );
-                            })}
-                            {isSelected && (
-                                <li
-                                    className={
-                                        "wp-block-mytheme-blocks-team-member__addIconLI"
-                                    }
-                                >
-                                    <Tooltip
-                                        text={__("Add Item", VggGutenConst.NAMESPACE)}
-                                    >
-                                        <button
-                                            className={
-                                                "wp-block-mytheme-blocks-team-member__addIcon"
-                                            }
-                                            onClick={this.addNewLink}
-                                        >
-                                            <Dashicon icon={"plus"} size={14} />
-                                        </button>
-                                    </Tooltip>
-                                </li>
-                            )}
-                        </ul> */}
+                       
                     </div>
                     {this.state.selectedLink !== null && (
                         <div

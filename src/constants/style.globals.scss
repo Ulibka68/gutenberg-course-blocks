@@ -1,0 +1,21 @@
+$namespace : "vgg-lrn-blocks";
+
+$BLK_NAME_SECOND : "secondblock";
+$BLK_NAME_RENDERBLK : "renderblock";
+$BLK_NAME_TEAM_MEMBER : "team-member";
+$BLK_NAME_TEAM_MEMBERS : "team-members";
+$BLK_NAME_LATEST_POSTS : "latest-posts";
+$BLK_NAME_TODO_LIST : "todo-list";
+$BLK_NAME_REDUX : "redux";
+$BLK_NAME_TODO_LIST_COUNT : "todo-list-count";
+$BLK_NAME_META : "meta";
+
+$BLK_NAME_SECOND-selector : "wp-block-" + $namespace + "-" + $BLK_NAME_SECOND;
+$BLK_NAME_RENDERBLK-selector : "wp-block-" + $namespace + "-" + $BLK_NAME_RENDERBLK;
+$BLK_NAME_TEAM_MEMBER-selector : "wp-block-" + $namespace + "-" + $BLK_NAME_TEAM_MEMBER;
+$BLK_NAME_TEAM_MEMBERS-selector : "wp-block-" + $namespace + "-" + $BLK_NAME_TEAM_MEMBERS;
+$BLK_NAME_LATEST_POSTS-selector : "wp-block-" + $namespace + "-" + $BLK_NAME_LATEST_POSTS;
+$BLK_NAME_TODO_LIST-selector : "wp-block-" + $namespace + "-" + $BLK_NAME_TODO_LIST;
+$BLK_NAME_REDUX-selector : "wp-block-" + $namespace + "-" + $BLK_NAME_REDUX;
+$BLK_NAME_TODO_LIST_COUNT-selector : "wp-block-" + $namespace + "-" + $BLK_NAME_TODO_LIST_COUNT;
+$BLK_NAME_META-selector : "wp-block-" + $namespace + "-" + $BLK_NAME_META;

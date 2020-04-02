@@ -1,4 +1,5 @@
 import { registerStore } from "@wordpress/data";
+import VggGutenConst from "../../constants";
 
 const DEFAULT_STATE = [];
 
@@ -70,7 +71,7 @@ const selectors = {
     }
 };
 
-registerStore("mytheme-blocks/todo", {
+registerStore(VggGutenConst.NAMESPACE + "/todo", {
     reducer,
     selectors,
     actions,

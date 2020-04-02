@@ -12,7 +12,8 @@ if ( ! defined( 'ABSPATH' )) {
 }
 
 include_once('src/metabox.php');
-include_once('plugin_const.php');
+include_once('src/phpcode/plugin_const.php');
+include_once('src/phpcode/register-cust.php');
 
 function mytheme_blocks_categories( $categories, $post ){
     return array_merge(

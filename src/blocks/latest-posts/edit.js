@@ -78,8 +78,6 @@ export default withSelect((select, props) => {
     }
     return {
         posts: select("core").getEntityRecords("postType", "post", query),
-        categories: select("core").getEntityRecords("taxonomy", "category", {
-            per_page: -1
-        })
+        categories: select("core").getEntityRecords("taxonomy", "category", {per_page: -1})
     };
 })(LatestPostsEdit);

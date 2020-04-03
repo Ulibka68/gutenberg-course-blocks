@@ -1,4 +1,5 @@
 <?php
+include_once('plugin_const.php');
 
 function mytheme_blocks_register_meta() {
     register_meta('post', '_mytheme_blocks_post_subtitle', array(
@@ -10,9 +11,23 @@ function mytheme_blocks_register_meta() {
             return current_user_can('edit_posts');
         }
     ));     
+
+
+    register_meta('post', 
+        VggGutenConst::NAMESPACE . '_todo_key1', array(
+        'show_in_rest' => true,
+        'object_subtype'    => 'todo',
+        'type' => 'string',
+        'single' => true,
+        'sanitize_callback' => 'sanitize_text_field',
+        // 'auth_callback' => function() {
+        //     return current_user_can('edit_posts');
+        // }
+    ));     
 }
 
 add_action('init', 'mytheme_blocks_register_meta');
+
 
 function mytheme_blocks_add_meta_box() {
     add_meta_box( 
@@ -24,9 +39,34 @@ function mytheme_blocks_add_meta_box() {
         'default',
         array('__back_compat_meta_box' => true)
     );
+
+    
+	add_meta_box( 
+        'sunset_callback_id', // id атрибут HTML тега, контейнера блока.
+        'Название мета блока', // Заголовок/название блока. 
+        'sunset_callback', // $callback(строка) (обязательный) Функция, которая выводит на экран HTML содержание блока. Должна выводить результат на экран
+        'post', // $screen(строка/массив/WP_Screen)  Название экрана для которого добавляется блок
+        'side', // $context(строка) Место где должен показываться блок: normal, advanced или side.
+        'default', // $priority(строка) Приоритет блока для показа выше или ниже остальных блоков: high или low. 
+                   // Также можно указать core, default. По умолчанию: 'default'
+                   // $callback_args(массив)
+         null       // Аргументы, которые нужно передать в callback функцию указанную в параметре $callback. 
+                    // callback функция получит данные поста (объект $post) и аргументы переданные в этом параметре.
+    );
+
 }
 
 add_action( 'add_meta_boxes', 'mytheme_blocks_add_meta_box' );
+
+function sunset_callback( $post ) {
+	// $value = get_post_meta( $post->ID, VggGutenConst::NAMESPACE . '_todo_key1', true );
+	// wp_nonce_field( 'sunset_save_contact_email_data', 'sunset_contact_email_meta_box_nonce' );
+	
+	
+	echo '<label for="sunset_contact_email_field">User Email Address: </lable>';
+	// echo '<input type="email" id="sunset_contact_email_field" name="sunset_contact_email_field" value="' . esc_attr( $value ) . '" size="25" />';
+}
+
 
 function mytheme_blocks_post_options_metabox_html($post) {
     $subtitle = get_post_meta($post->ID, '_mytheme_blocks_post_subtitle', true);

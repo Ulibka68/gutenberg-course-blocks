@@ -14,7 +14,7 @@ $labels = [
 $args = [
     "label" => __( "Todo's", "guten-vgg" ),
     "labels" => $labels,
-    "description" => "",
+    
     "public" => true,
     "publicly_queryable" => true,
     "show_ui" => true,
@@ -29,7 +29,9 @@ $args = [
     "hierarchical" => false,
     "query_var" => true,
     "supports" => [ "title", "editor", "thumbnail" ],
-    "menu_icon" => "dashicons-editor-customchar"
+    "menu_icon" => "dashicons-editor-customchar",
+    'rewrite'             => true,
+    'query_var'           => true,
 ];
 
 register_post_type( "todo", $args );

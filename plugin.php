@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH' )) {
     exit;
 }
 
-include_once('src/metabox.php');
+include_once('src/phpcode/metabox.php');
 include_once('src/phpcode/plugin_const.php');
 include_once('src/phpcode/register-cust.php');
 

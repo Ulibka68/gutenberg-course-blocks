@@ -5,6 +5,22 @@ const TerserPlugin = require("terser-webpack-plugin");
 
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
+
+/**
+ * External dependencies
+ */
+// const { BundleAnalyzerPlugin } = require( 'webpack-bundle-analyzer' );
+// const LiveReloadPlugin = require( 'webpack-livereload-plugin' );
+const path = require( 'path' );
+
+/**
+ * WordPress dependencies
+ */
+const DependencyExtractionWebpackPlugin = require( '@wordpress/dependency-extraction-webpack-plugin' );
+
+
+
+
 module.exports = (env, argv) => {
     function isDevelopment() {
         return argv.mode === "development";
@@ -16,7 +32,13 @@ module.exports = (env, argv) => {
             editor_script: "./src/editor_script.js"
         },
         output: {
-            filename: "[name].js"
+            filename: "[name].js",
+            path: path.resolve( process.cwd(), 'dist' ),
+        },
+        resolve: {
+            alias: {
+                'lodash-es': 'lodash',
+            },
         },
         optimization: {
             minimizer: [
@@ -44,8 +66,13 @@ module.exports = (env, argv) => {
                   const { name } = chunk;
                   return   name === "script" ? "style.css" : "[name].css";
                 }
-              })
+              }),
+            //   new BundleAnalyzerPlugin(),
+              new DependencyExtractionWebpackPlugin( { injectPolyfill: true } ),
         ],
+        stats: {
+            children: false,
+        },
         devtool: isDevelopment() ? "cheap-module-source-map" : "source-map",
         module: {
             rules: [
@@ -92,22 +119,25 @@ module.exports = (env, argv) => {
                 }
             ]
         },
-        externals: {
-            jquery: "jQuery",
-            lodash: "lodash",
-            "@wordpress/blocks": ["wp", "blocks"],
-            "@wordpress/i18n": ["wp", "i18n"],
-            
-            "@wordpress/block-editor": ["wp", "blockEditor"],
-            "@wordpress/components": ["wp", "components"],
-            "@wordpress/element": ["wp", "element"],
-            "@wordpress/blob": ["wp", "blob"],
-            "@wordpress/data": ["wp", "data"],
-            "@wordpress/html-entities": ["wp", "htmlEntities"],
-            "@wordpress/compose": ["wp", "compose"],
-            "@wordpress/plugins": ["wp", "plugins"],
-            "@wordpress/edit-post": ["wp", "editPost"]
-        }
+     
     };
     return config;
 };
+
+
+// externals: {
+//     jquery: "jQuery",
+//     lodash: "lodash",
+//     "@wordpress/blocks": ["wp", "blocks"],
+//     "@wordpress/i18n": ["wp", "i18n"],
+    
+//     "@wordpress/block-editor": ["wp", "blockEditor"],
+//     "@wordpress/components": ["wp", "components"],
+//     "@wordpress/element": ["wp", "element"],
+//     "@wordpress/blob": ["wp", "blob"],
+//     "@wordpress/data": ["wp", "data"],
+//     "@wordpress/html-entities": ["wp", "htmlEntities"],
+//     "@wordpress/compose": ["wp", "compose"],
+//     "@wordpress/plugins": ["wp", "plugins"],
+//     "@wordpress/edit-post": ["wp", "editPost"]
+// }

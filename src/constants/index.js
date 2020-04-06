@@ -1,11 +1,11 @@
 class VggGutenConst {
     
     
-    // static NAMESPACE = 'mytheme-blocks';
-    // static SLUG_THEME_CATEGORY = 'mytheme-category';
+    static NAMESPACE = 'mytheme-blocks';
+    static SLUG_THEME_CATEGORY = 'mytheme-category';
     
-    static NAMESPACE = 'vgg-lrn-blocks';
-    static SLUG_THEME_CATEGORY = 'vgg-theme-category';
+    // static NAMESPACE = 'vgg-lrn-blocks';
+    // static SLUG_THEME_CATEGORY = 'vgg-theme-category';
 
     
     static BLK_NAME_SECOND = "/secondblock";

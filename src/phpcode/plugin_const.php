@@ -5,10 +5,10 @@ class VggGutenConst
     // файл для трансляции
     
     
-    // const SLUG_THEME_CATEGORY = 'mytheme-category';
-    // const NAMESPACE = 'mytheme-blocks';
-    const SLUG_THEME_CATEGORY = 'vgg-theme-category';
-    const NAMESPACE = 'vgg-lrn-blocks';
+    const SLUG_THEME_CATEGORY = 'mytheme-category';
+    const NAMESPACE = 'mytheme-blocks';
+    // const SLUG_THEME_CATEGORY = 'vgg-theme-category';
+    // const NAMESPACE = 'vgg-lrn-blocks';
 
     // ********* Категории ************
     // Название категории блоков в реадкторе

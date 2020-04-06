@@ -24,12 +24,16 @@ registerBlockType( VggGutenConst.NAMESPACE+VggGutenConst.BLK_NAME_META, {
         function onChange(value) {
             setAttributes({ post_subtitle: value });
         }
+
+        // console.log("edit -> attributes.post_subtitle", attributes.post_subtitle);
+
         return (
             <div>
                 <TextControl
                     label={__("Post Subtitle", VggGutenConst.NAMESPACE)}
                     value={attributes.post_subtitle}
                     onChange={onChange}
+                    
                 />
             </div>
         );
@@ -39,3 +43,9 @@ registerBlockType( VggGutenConst.NAMESPACE+VggGutenConst.BLK_NAME_META, {
         return null;
     }
 });
+
+
+// wp.data.dispatch('core/editor').editPost({meta: {_mytheme_blocks_post_subtitle : "sub4"}})
+// wp.data.dispatch('core/editor').editPost({meta: {_mytheme_blocks_post_subtitle : ["sub5",'sub4']}})
+// wp.data.select('core/editor').getEditedPostAttribute('meta')
+// wp.data.select('core/editor').getCurrentPost().author

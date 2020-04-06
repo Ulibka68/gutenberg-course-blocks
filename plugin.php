@@ -16,6 +16,7 @@ if ( ! defined( 'ABSPATH' )) {
 include_once('src/phpcode/meta-field-register.php');
 include_once('src/phpcode/plugin_const.php');
 include_once('src/phpcode/register-cust.php');
+include_once('src/phpcode/logfile.php');
 
 function mytheme_blocks_categories( $categories, $post ){
     return array_merge(
@@ -48,7 +49,6 @@ function mytheme_blocks_register_block_type($block, $options = array ()) {
     );
 }
 
-
 function mytheme_blocks_enqueue_assets() {
     wp_enqueue_script(
         VggGutenConst::NAMESPACE . '-editor-js',
@@ -62,6 +62,10 @@ add_action('enqueue_block_editor_assets', 'mytheme_blocks_enqueue_assets');
 
 function mytheme_blocks_register() { 
     
+  	// automatically load dependencies and version
+    $asset_file = include( plugin_dir_path( __FILE__ ) . 'dist/editor_script.asset.php');
+    _log( $asset_file ); 
+
     wp_register_script(
         VggGutenConst::NAMESPACE . '-editor-script',
         plugins_url('dist/editor.js', __FILE__),

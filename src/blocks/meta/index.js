@@ -16,7 +16,7 @@ registerBlockType( VggGutenConst.NAMESPACE+VggGutenConst.BLK_NAME_META, {
         post_subtitle: {
             type: "string",
             source: "meta",
-            meta: "_mytheme_blocks_post_subtitle"
+            meta: VggGutenConst.META_POST_FLD1
         }
     },
 

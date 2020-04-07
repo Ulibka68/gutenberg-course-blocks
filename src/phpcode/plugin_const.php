@@ -29,7 +29,7 @@ class VggGutenConst
 
     // ******** метаполя ********
     // для типа todo :
-    const  META_TODO_FLD1 = '_' . self::NAMESPACE . '_todo_list';
+    const  META_TODO_FLD1 = "_mytheme_blocks_todo_list";
     // для post
     const META_POST_FLD1 = "_mytheme_blocks_post_subtitle";
 

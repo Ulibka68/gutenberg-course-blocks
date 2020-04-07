@@ -1,14 +1,18 @@
 import { Component } from "@wordpress/element";
 import { withSelect, withDispatch } from "@wordpress/data";
 import { compose } from "@wordpress/compose";
+import { v4 as uuidv4 } from 'uuid';
 import VggGutenConst from "../../constants";
+
 
 class MetaTodoEdit extends Component {
     state = {
         new_todo: ""
     };
     render() {
-        const { todos, addToDo, toggleToDo } = this.props;
+        const { todos=[], addToDo, toggleToDo } = this.props;
+        // console.log("MetaTodoEdit -> render -> todos", todos);
+        
         return (
             <div>
                 {todos.map((todo, index) => {
@@ -28,7 +32,7 @@ class MetaTodoEdit extends Component {
                                 disabled={todo.loading}
                                 type="checkbox"
                                 checked={todo.completed}
-                                onChange={() => toggleToDo(todo, index)}
+                                onChange={() => toggleToDo(todo)}
                             />
                             {todo.title}
                         </div>
@@ -41,10 +45,14 @@ class MetaTodoEdit extends Component {
                 />
                 <button
                     onClick={() =>
-                        addToDo({
-                            title: this.state.new_todo,
-                            completed: false
-                        })
+                        {
+                            addToDo({
+                                title: this.state.new_todo,
+                                completed: false,
+                                id : uuidv4()
+                            });
+                            this.setState({ new_todo: ''});
+                        }
                     }
                 >
                     Add
@@ -56,18 +64,49 @@ class MetaTodoEdit extends Component {
 
 export default compose([
     withSelect(select => {
+        let metaVal = select( 'core/editor' ).getEditedPostAttribute( 'meta' );
+        metaVal = metaVal ? JSON.parse( metaVal[VggGutenConst.META_TODO_FLD1])  : [];
+
         return {
-            todos: select( VggGutenConst.NAMESPACE+ "/todo").getTodos()
+            // todos: select( VggGutenConst.NAMESPACE+ "/todo").getTodos()
+
+            todos: metaVal
         };
     }),
-    withDispatch(dispatch => {
+    withDispatch(  (dispatch, props) => {
         return {
             addToDo: item => {
-                dispatch(VggGutenConst.NAMESPACE+ "/todo").addToDo(item);
+                // console.log("item", item);
+              
+                let metaValue = JSON.stringify( [...props.todos,item]);
+				dispatch( 'core/editor' ).editPost(
+                    { 
+                        meta: { [VggGutenConst.META_TODO_FLD1] : metaValue } 
+                    }
+				);
             },
-            toggleToDo: (todo, index) => {
-                dispatch(VggGutenConst.NAMESPACE+ "/todo").toggleToDo(todo, index);
+            toggleToDo: (todo) => {
+                
+                let metaValue = [...props.todos];
+                
+                let ind = metaValue.findIndex( (element) => {
+                    return element.id === todo.id;
+                });
+
+                if (ind > -1) {
+                    metaValue[ind].completed = !todo.completed;
+                };
+
+                metaValue = JSON.stringify( metaValue);
+				dispatch( 'core/editor' ).editPost(
+                    { 
+                        meta: { [VggGutenConst.META_TODO_FLD1] : metaValue } 
+                    }
+				);
             }
         };
     })
 ])(MetaTodoEdit);
+
+// select("core/editor").getEditedPostAttribute("title")
+// dispatch("core/editor").editPost({ title });

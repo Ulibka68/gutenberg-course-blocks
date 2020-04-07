@@ -7,7 +7,7 @@
 
 
 
-
+=======================================================
 
 var query = {
 			per_page: -1,
@@ -18,7 +18,29 @@ var query = {
 			status: 'publish,future,draft,pending,private',
 		};
 getposttypes
-wp.data.select("core").getEntityRecords("postType", "todo", { per_page: 10, id : 67 })
+wp.data.select("core").getEntityRecords("postType", "todo", { per_page: 10})
+
+
+
+wp.data.select("core").getEntityRecords("postType", "post", { include : 90 })
+Parameters
+
+state Object: State tree
+kind string: Entity kind.
+name string: Entity name.
+key number: Record’s key
+
+wp.data.dispatch("core").editEntityRecord("postType", "post", 90, { meta : { _mytheme_blocks_post_subtitle : "subt26"} })
+wp.data.dispatch("core").editEntityRecord("postType", "post", 90, { meta : { _mytheme_blocks_post_subtitle : "subt26"} })
+saveEntityRecord
+Parameters
+
+kind string: Kind of the edited entity record.
+name string: Name of the edited entity record.
+recordId number: Record ID of the edited entity record.
+edits Object: The edits.
+options Object: Options for the edit.
+options.undoIgnore boolean: Whether to ignore the edit in undo history or not.
 
 https://rudrastyh.com/gutenberg/get-posts-in-dynamic-select-control.html#getEntityRecords
 
@@ -74,11 +96,12 @@ tags – tag ID or an array of IDs.
 search – you can also search for specific posts, uses the default WordPress search algorithm.
 
 
-
+=======================================================
 
 var postTypeSlug = selectEditor.getEditedPostAttribute( 'type' );
 		var postType = selectCore.getPostType( postTypeSlug );
 
+=======================================================
 
 function add_custom_field() {
     register_rest_field( 'POST_TYPE',
@@ -97,15 +120,22 @@ function rest_get_post_field( $post, $field_name, $request ) {
 }        
 
 
-
+=======================================================
 
 wp.data.select("core").getEntityRecords("postType", "todo", { include : 72, author : 1 })
 
 wp.data.select('core/editor').getCurrentPost().author
 
+wp.data.dispatch( 'core/editor' ).editPost( {meta : { _mytheme_blocks_todo_list: '[{"title":"дело29","completed":false}]' }})
+wp.data.dispatch( 'core/editor' ).editPost( {meta : { _mytheme_blocks_todo_list: metval256 }})
+
+wp.data.select( 'core/editor' ).getEditedPostAttribute( 'meta' )
+
+=======================================================
 
 $env:path+=";Y:\ospanel5-3-5\modules\php\PHP_7.2-x64"
 
+=======================================================
 
 Установка компосера:
 php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"

@@ -1,5 +1,6 @@
 import { registerStore } from "@wordpress/data";
 import VggGutenConst from "../../constants";
+// import registerToDoBaseStore from "./todobase";
 
 const DEFAULT_STATE = [];
 
@@ -103,3 +104,5 @@ registerStore(VggGutenConst.NAMESPACE + "/todo", {
         }
     }
 });
+
+registerToDoBaseStore();

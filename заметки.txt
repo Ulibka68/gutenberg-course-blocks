@@ -1,1 +1,119 @@
 для регистрации redux store в webpack создан отдельный entry point : editor_scripts.js
+
+// wp.data.dispatch('core/editor').editPost({meta: {_mytheme_blocks_post_subtitle : "sub4"}})
+// wp.data.dispatch('core/editor').editPost({meta: {_mytheme_blocks_post_subtitle : ["sub5",'sub4']}})
+// wp.data.select('core/editor').getEditedPostAttribute('meta')
+// wp.data.select('core/editor').getCurrentPost().author
+
+
+
+
+
+var query = {
+			per_page: -1,
+			exclude: postId,
+			parent_exclude: postId,
+			orderby: 'menu_order',
+			order: 'asc',
+			status: 'publish,future,draft,pending,private',
+		};
+getposttypes
+wp.data.select("core").getEntityRecords("postType", "todo", { per_page: 10, id : 67 })
+
+https://rudrastyh.com/gutenberg/get-posts-in-dynamic-select-control.html#getEntityRecords
+
+Here are options for posts:
+
+context
+page
+per_page
+search
+after
+author
+author_exclude
+before
+exclude
+include
+offset
+order
+orderby
+slug
+status
+categories
+categories_exclude
+tags
+tags_exclude
+sticky
+
+https://wordpress.stackexchange.com/questions/328277/what-are-all-the-query-parameters-for-getentityrecords
+https://github.com/WordPress/gutenberg/blob/master/packages/core-data/src/entities.js
+
+Параметры для query:
+https://developer.wordpress.org/rest-api/reference/posts/
+
+per_page – how much posts to get, defaults 10, does not depend on the number of posts set in Settings > 
+Reading. Set to -1 to display all the available posts.
+
+include 
+
+exclude – allows to exlude a post with a certain ID, or multiple posts passed in an array, example 'exclude' : [ 1, 10 ]. 
+Use select('core/editor').getCurrentPostId to exclude current post ID.
+
+parent_exclude – similar to exclude, but it excludes only all the direct children of a selected post. Accepts multiple values in an array.
+
+orderby – how to order posts. Accepts: id, title, date, menu_order, author values. Defaults to date.
+
+order – sort ascending (asc) or descending (desc)? Default to desc
+
+status – post status, accepts values: publish, draft, future, pending, private, multiple values can be presented as an array or separated by commas.
+
+categories – category ID or an array of IDs
+
+tags – tag ID or an array of IDs.
+
+search – you can also search for specific posts, uses the default WordPress search algorithm.
+
+
+
+
+var postTypeSlug = selectEditor.getEditedPostAttribute( 'type' );
+		var postType = selectCore.getPostType( postTypeSlug );
+
+
+function add_custom_field() {
+    register_rest_field( 'POST_TYPE',
+        'FIELD_NAME',
+        array(
+            'get_callback'  => 'rest_get_post_field',
+            'update_callback'   => null,
+            'schema'            => null,
+        )
+    );
+}
+add_action( 'rest_api_init', 'add_custom_field' );
+
+function rest_get_post_field( $post, $field_name, $request ) {
+    return get_post_meta( $post[ 'id' ], $field_name, true );
+}        
+
+
+
+
+wp.data.select("core").getEntityRecords("postType", "todo", { include : 72, author : 1 })
+
+wp.data.select('core/editor').getCurrentPost().author
+
+
+$env:path+=";Y:\ospanel5-3-5\modules\php\PHP_7.2-x64"
+
+
+Установка компосера:
+php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+php -r "if (hash_file('sha384', 'composer-setup.php') === 'e0012edf3e80b6978849f5eff0d4b4e4c79ff1609dd1e613307e16318854d24ae64f26d17af3ef0bf7cfb710ca74755a') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
+php composer-setup.php
+php -r "unlink('composer-setup.php');"
+
+=================================
+https://packagist.org/packages/intervention/image
+
+php composer.phar require intervention/image

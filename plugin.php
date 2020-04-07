@@ -11,10 +11,11 @@ if ( ! defined( 'ABSPATH' )) {
     exit;
 }
 
+// metabox относится к предыдущей версии редактора, лучше не использовать
 // include_once('src/phpcode/metabox.php');
 
-include_once('src/phpcode/meta-field-register.php');
 include_once('src/phpcode/plugin_const.php');
+include_once('src/phpcode/meta-field-register.php');
 include_once('src/phpcode/register-cust.php');
 
 function mytheme_blocks_categories( $categories, $post ){
@@ -107,6 +108,7 @@ function mytheme_blocks_register() {
     );
     mytheme_blocks_register_block_type(VggGutenConst::BLK_NAME_REDUX);
     mytheme_blocks_register_block_type(vggGutenConst::BLK_NAME_TODO_LIST);
+    mytheme_blocks_register_block_type(vggGutenConst::BLK_NAME_TODO_LIST_META);
     mytheme_blocks_register_block_type(VggGutenConst::BLK_NAME_TODO_LIST_COUNT);
     mytheme_blocks_register_block_type(VggGutenConst::BLK_NAME_META);
 }

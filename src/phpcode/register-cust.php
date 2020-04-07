@@ -28,7 +28,7 @@ $args = [
     "map_meta_cap" => true,
     "hierarchical" => false,
     "query_var" => true,
-    "supports" => [ "title", "editor", "thumbnail" ],
+    "supports" => [ "title", "editor", "thumbnail","author" ],
     "menu_icon" => "dashicons-editor-customchar"
 ];
 
